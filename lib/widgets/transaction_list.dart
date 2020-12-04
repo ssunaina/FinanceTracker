@@ -36,16 +36,14 @@ class TransactionList extends StatelessWidget {
               );
             },
           )
-        : ListView.builder(
-            itemBuilder: (ctx, index) {
-              var padding2 = Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: TransactionItem(transaction: transactions[index], deleteTx: deleteTx),
-              );
-              return padding2;
-            },
-            itemCount: transactions.length,
+        : ListView(
+            children: transactions
+                .map((tx) => TransactionItem(
+                      key: ValueKey(tx.id),
+                      transaction: tx,
+                      deleteTx: deleteTx,
+                    ))
+                .toList(),
           );
   }
 }
-

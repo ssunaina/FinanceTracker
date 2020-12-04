@@ -22,7 +22,8 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
-  DateTime _selectedDate;
+
+  DateTime _selectedDate = DateTime.now();
 
   _NewTransactionState() {
     print('Constructor NewTransaction State');
@@ -74,14 +75,14 @@ class _NewTransactionState extends State<NewTransaction> {
                     height: MediaQuery.of(context).copyWith().size.height / 2.5,
                     child: CupertinoDatePicker(
                       mode: CupertinoDatePickerMode.date,
-                      // initialDateTime: DateTime.now(),
+                      initialDateTime: DateTime.now(),
                       onDateTimeChanged: (DateTime pickedDate) {
-                        if (pickedDate == null) {
-                          setState(() {
-                            _selectedDate = DateTime.now();
-                            print(_selectedDate);
-                          });
-                        }
+                        // if (pickedDate == null) {
+                        //   setState(() {
+                        //     _selectedDate = DateTime.now();
+                        //     print(_selectedDate);
+                        //   });
+                        // }
                         setState(
                           () {
                             _selectedDate = pickedDate;
